@@ -2,10 +2,10 @@ package com.klp.oppgave.user.controller;
 
 import com.klp.oppgave.user.entity.User;
 import com.klp.oppgave.user.service.UserService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -23,8 +23,10 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Optional<User> getUser(@PathVariable Integer id) {
-        return userService.getUserById(id);
+    public ResponseEntity<User> getUser(@PathVariable Integer id) {
+        return userService.getUserById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping
