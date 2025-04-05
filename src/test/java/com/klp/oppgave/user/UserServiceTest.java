@@ -43,6 +43,6 @@ class UserServiceTest {
         assertEquals(3, resultNoParam.size());
         assertEquals(0, resultOtherParam.size());
 
-        assertEquals("user1@example.com", resultUser.get(0).getEmail());
+        assertEquals("user1@example.com", resultUser.getFirst().getEmail());
     }
 }
