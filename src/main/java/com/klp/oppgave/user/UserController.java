@@ -1,7 +1,5 @@
-package com.klp.oppgave.user.controller;
+package com.klp.oppgave.user;
 
-import com.klp.oppgave.user.entity.User;
-import com.klp.oppgave.user.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

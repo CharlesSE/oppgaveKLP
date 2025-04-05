@@ -1,7 +1,5 @@
-package com.klp.oppgave.user.service;
+package com.klp.oppgave.user;
 
-import com.klp.oppgave.user.entity.User;
-import com.klp.oppgave.user.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

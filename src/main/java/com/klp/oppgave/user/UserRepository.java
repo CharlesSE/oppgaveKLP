@@ -1,7 +1,6 @@
-package com.klp.oppgave.user.repository;
+package com.klp.oppgave.user;
 
 
-import com.klp.oppgave.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

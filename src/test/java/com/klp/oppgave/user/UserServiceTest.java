@@ -3,9 +3,6 @@ package com.klp.oppgave.user;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.klp.oppgave.user.entity.User;
-import com.klp.oppgave.user.repository.UserRepository;
-import com.klp.oppgave.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

@@ -1,6 +1,5 @@
 package com.klp.oppgave.user;
 
-import com.klp.oppgave.user.entity.User;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

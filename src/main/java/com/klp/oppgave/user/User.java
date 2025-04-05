@@ -1,4 +1,4 @@
-package com.klp.oppgave.user.entity;
+package com.klp.oppgave.user;
 
 import jakarta.persistence.*;
 

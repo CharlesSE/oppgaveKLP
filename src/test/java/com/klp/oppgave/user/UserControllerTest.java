@@ -1,8 +1,5 @@
 package com.klp.oppgave.user;
 
-import com.klp.oppgave.user.controller.UserController;
-import com.klp.oppgave.user.entity.User;
-import com.klp.oppgave.user.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
