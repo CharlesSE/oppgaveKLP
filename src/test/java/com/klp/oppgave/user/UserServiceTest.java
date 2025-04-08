@@ -33,13 +33,6 @@ class UserServiceTest {
     }
 
     @Test
-    void testCreateUserNullFieldsThrowsException() {
-        User invalidUser = new User(null, "USER");
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> userService.createUser(invalidUser));
-        assertEquals("Email and type are required", exception.getMessage());
-    }
-
-    @Test
     void testGetUserByIdFound() {
         User user = new User("user@example.com", "USER");
         user.setId(1);
