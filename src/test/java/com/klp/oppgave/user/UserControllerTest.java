@@ -83,6 +83,13 @@ class UserControllerTest {
                 .andExpect(content().string("User with ID 999 not found"));
     }
 
+    @Test
+    void testGetUserWithInvalidId() throws Exception {
+        mockMvc.perform(get("/user/abc")
+                        .contentType("application/json"))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("ID must be an integer"));
+    }
 
     @Test
     void testGetUsersWithFilter() throws Exception {
