@@ -1,30 +1,31 @@
 package com.klp.oppgave.user;
 
 import jakarta.persistence.*;
-
-import java.util.Set;
-import java.util.regex.Pattern;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "users")
 public class User {
 
-    public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
-            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @NotNull(message = "Email cannot be null")
+    @Email(message = "Email must be a valid email address")
     @Column(nullable = false)
     private String email;
+    @NotNull(message = "Type cannot be null")
+    @Pattern(regexp = "USER|ADMIN", message = "Type must be either 'USER' or 'ADMIN'")
     @Column(nullable = false)
     private String type;
 
     public User() {}
 
     public User(String email, String type) {
-        setEmail(email);
-        setType(type);
+        this.email = email;
+        this.type = type;
     }
 
     public String getEmail() {
@@ -40,9 +41,6 @@ public class User {
     }
 
     public void setEmail(String email) {
-        if (!VALID_EMAIL_ADDRESS_REGEX.matcher(email).matches()) {
-            throw new IllegalArgumentException("Invalid email address");
-        }
         this.email = email;
     }
 
@@ -51,10 +49,6 @@ public class User {
     }
 
     public void setType(String type) {
-        Set<String> validTypes = Set.of("USER", "ADMIN");
-        if (!validTypes.contains(type)) {
-            throw new IllegalArgumentException("Invalid user type: " + type);
-        }
         this.type = type;
     }
 }

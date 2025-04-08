@@ -1,5 +1,6 @@
 package com.klp.oppgave.user;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,21 +16,22 @@ public class UserService {
     }
 
     public User createUser(User user) {
+        if (user.getEmail() == null || user.getType() == null) {
+            throw new IllegalArgumentException("Email and type are required");
+        }
         return userRepository.save(user);
     }
 
-    public Optional<User> getUserById(int id) {
-        return userRepository.findById(id);
+
+    public User getUserById(int id) {
+        return userRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("User with ID " + id + " not found"));
     }
 
     public List<User> getUsersByType(String filter) {
-        List<User> allUsers = userRepository.findAll();
         if (filter == null) {
-            return allUsers;
+            return userRepository.findAll();
         } else {
-            return allUsers.stream()
-                    .filter(user -> user.getType().equals(filter.toUpperCase()))
-                    .toList();
+            return userRepository.findByType(filter.toUpperCase());
         }
     }
 }
