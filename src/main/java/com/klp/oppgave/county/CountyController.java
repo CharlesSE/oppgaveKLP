@@ -20,7 +20,7 @@ public class CountyController {
     }
 
     @GetMapping("/{countyNumber}")
-    public ResponseEntity<String> getCountyInfo(@PathVariable String countyNumber) {
+    public ResponseEntity<String> getCountyName(@PathVariable String countyNumber) {
 
         if (!countyNumber.matches("\\d{2}")) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)

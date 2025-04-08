@@ -27,7 +27,7 @@ class CountyControllerTest {
     private static final String BASE_URL = "https://api.kartverket.no/kommuneinfo/v1/fylker/";
 
     @Test
-    void testGetCountyInfoValidCountyNumber() throws Exception {
+    void testGetCountyNameValidCountyNumber() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode mockResponse = objectMapper.readTree("{\"fylkesnavn\":\"Buskerud\"}");
         when(restTemplate.getForObject(BASE_URL + "33", JsonNode.class))
@@ -39,7 +39,7 @@ class CountyControllerTest {
     }
 
     @Test
-    void testGetCountyInfoInvalidCountyNumber() throws Exception {
+    void testGetCountyNameInvalidCountyNumber() throws Exception {
         when(restTemplate.getForObject(
                 eq(BASE_URL + "77"),
                 eq(JsonNode.class))
@@ -69,7 +69,7 @@ class CountyControllerTest {
     }
 
     @Test
-    void testGetCountyInfoServerError() throws Exception {
+    void testGetCountyNameServerError() throws Exception {
         when(restTemplate.getForObject(BASE_URL + "99", JsonNode.class))
                 .thenThrow(new RuntimeException("Unexpected error"));
 
